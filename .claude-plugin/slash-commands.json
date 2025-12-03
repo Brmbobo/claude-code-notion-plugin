@@ -1,128 +1,34 @@
-# Notion Workspace Plugin for Claude Code
-
-This repository provides an official Claude Code plugin that bundles:
-
-- **Notion Skills** (from the Notion Cookbook) that teach Claude how to work intelligently inside your Notion workspace  
-- The **Notion MCP Server** (`@notionhq/notion-mcp-server`), which enables Claude to securely search, read, and update your Notion content  
-- A curated set of **Slash Commands** that make common Notion workflows fast and natural  
-
-This plugin allows Claude Code users to install everything — Skills + MCP server — with **one click**.
-
----
-
-## 🚀 Features
-
-### ✅ Fully packaged Notion Skills
-Includes all four high-quality Skills from the Notion Cookbook:
-
-- **Knowledge Capture**
-- **Meeting Intelligence**
-- **Research Documentation**
-- **Spec to Implementation**
-
-These instructions teach Claude how to structure, write, summarize, capture, and maintain content in your Notion workspace.
-
-### ✅ Integrated Notion MCP Server  
-Claude Code automatically launches:
-
-```
-npx -y @notionhq/notion-mcp-server
-```
-
-This provides Claude with tools to:
-
-- Search your workspace  
-- Retrieve pages & databases  
-- Create and update pages  
-- Append notes or blocks  
-- Insert database rows  
-- Work with properties safely  
-
-### ✅ Powerful Slash Commands  
-This plugin ships with a set of helpful commands:
-
-| Command | Description |
-|--------|-------------|
-| `/notion-search` | Search your entire Notion workspace |
-| `/notion-create-page` | Create a new page under a given parent |
-| `/notion-database-query` | Query a database by name or ID |
-| `/notion-create-task` | Create a task in a Tasks-style database |
-| `/notion-create-database-row` | Insert a row in any database |
-| `/notion-find` | Quick title-based search for pages/databases |
-
-These commands leverage both the Notion Skills and the MCP server.
-
----
-
-## 📦 Installation (Claude Code)
-
-### 1. Add this plugin's marketplace
-In Claude Code, run:
-
-```bash
-/plugin marketplace add makenotion/claude-code-notion-plugin
-```
-
-### 2. Install the plugin
-
-```bash
-/plugin install notion-workspace-plugin@notion-plugin-marketplace
-```
-
-### 3. Restart Claude Code  
-This ensures the MCP server starts correctly.
-
----
-
-## 🔑 Authentication
-
-The Notion MCP server supports multiple authentication methods, including **OAuth**, which is the recommended approach for most Claude Code users.
-
-### ✅ OAuth (Recommended)
-
-When you install this plugin and it first attempts to connect to the Notion MCP server, Claude Code will prompt you to:
-
-**“Sign in with Notion.”**
-
-1. Complete the OAuth flow in your browser  
-2. Claude Code stores your credential securely  
-3. The MCP server receives authenticated requests automatically  
-4. No manual integration setup required  
-
----
-## 📁 Project Structure
-
-```
-claude-code-notion-plugin/
-  .claude-plugin/
-    plugin.json
-    marketplace.json
-    slash-commands.json
-  skills/
-    notion/
-      knowledge-capture/
-      meeting-intelligence/
-      research-documentation/
-      spec-to-implementation/
-  .mcp.json
-  README.md
-  LICENSE
-```
-
----
-
-## 🔧 Development
-
-1. Clone the repo  
-2. Ensure Node is installed  
-3. Launch Claude Code  
-4. Install the plugin locally
-
----
-
-## 🙌 Credits
-
-- **Skills** by Notion 
-- **MCP Server** by Notion 
-- **Plugin Specification** by Anthropic  
-- COYS
+{
+    "commands": [
+      {
+        "name": "notion-search",
+        "description": "Search your connected Notion workspace using the Notion MCP server.",
+        "prompt": "Use the Notion Workspace Skill and the `notionApi` MCP server. Search the workspace for: {{query}}"
+      },
+      {
+        "name": "notion-create-page",
+        "description": "Create a new Notion page with a title and optional parent.",
+        "prompt": "Using the Notion Workspace Skill, create a new page titled '{{title}}' under parent '{{parent}}' if provided."
+      },
+      {
+        "name": "notion-database-query",
+        "description": "Query a Notion database by name or ID.",
+        "prompt": "Using the Notion Workspace Skill and MCP, query the database '{{database}}' with filters '{{filters}}'. Return structured results."
+      },
+      {
+        "name": "notion-create-task",
+        "description": "Create a new task inside the user's Tasks database.",
+        "prompt": "Using the Notion Workspace Skill and MCP, create a new task with title '{{title}}', status '{{status}}', due '{{due}}', owner '{{owner}}', and project '{{project}}' if provided. Ask for database confirmation if needed."
+      },
+      {
+        "name": "notion-create-database-row",
+        "description": "Create a new row in a specified Notion database.",
+        "prompt": "Using the Notion Workspace Skill and MCP, create a new row in database '{{database}}' with the provided properties: {{properties}}. Validate required properties."
+      },
+      {
+        "name": "notion-find",
+        "description": "Quickly find pages or databases by name.",
+        "prompt": "Using the Notion Workspace Skill and MCP, search for pages or databases that match '{{query}}'. Return titles, links, and types."
+      }
+    ]
+  }
