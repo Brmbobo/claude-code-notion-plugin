@@ -1,0 +1,128 @@
+# Notion Workspace Plugin for Claude Code
+
+This repository provides an official Claude Code plugin that bundles:
+
+- **Notion Skills** (from the Notion Cookbook) that teach Claude how to work intelligently inside your Notion workspace  
+- The **Notion MCP Server** (`@notionhq/notion-mcp-server`), which enables Claude to securely search, read, and update your Notion content  
+- A curated set of **Slash Commands** that make common Notion workflows fast and natural  
+
+This plugin allows Claude Code users to install everything — Skills + MCP server — with **one click**.
+
+---
+
+## 🚀 Features
+
+### ✅ Fully packaged Notion Skills
+Includes all four high-quality Skills from the Notion Cookbook:
+
+- **Knowledge Capture**
+- **Meeting Intelligence**
+- **Research Documentation**
+- **Spec to Implementation**
+
+These instructions teach Claude how to structure, write, summarize, capture, and maintain content in your Notion workspace.
+
+### ✅ Integrated Notion MCP Server  
+Claude Code automatically launches:
+
+```
+npx -y @notionhq/notion-mcp-server
+```
+
+This provides Claude with tools to:
+
+- Search your workspace  
+- Retrieve pages & databases  
+- Create and update pages  
+- Append notes or blocks  
+- Insert database rows  
+- Work with properties safely  
+
+### ✅ Powerful Slash Commands  
+This plugin ships with a set of helpful commands:
+
+| Command | Description |
+|--------|-------------|
+| `/notion-search` | Search your entire Notion workspace |
+| `/notion-create-page` | Create a new page under a given parent |
+| `/notion-database-query` | Query a database by name or ID |
+| `/notion-create-task` | Create a task in a Tasks-style database |
+| `/notion-create-database-row` | Insert a row in any database |
+| `/notion-find` | Quick title-based search for pages/databases |
+
+These commands leverage both the Notion Skills and the MCP server.
+
+---
+
+## 📦 Installation (Claude Code)
+
+### 1. Add this plugin's marketplace
+In Claude Code, run:
+
+```bash
+/plugin marketplace add makenotion/claude-code-notion-plugin
+```
+
+### 2. Install the plugin
+
+```bash
+/plugin install notion-workspace-plugin@notion-plugin-marketplace
+```
+
+### 3. Restart Claude Code  
+This ensures the MCP server starts correctly.
+
+---
+
+## 🔑 Authentication
+
+The Notion MCP server supports multiple authentication methods, including **OAuth**, which is the recommended approach for most Claude Code users.
+
+### ✅ OAuth (Recommended)
+
+When you install this plugin and it first attempts to connect to the Notion MCP server, Claude Code will prompt you to:
+
+**“Sign in with Notion.”**
+
+1. Complete the OAuth flow in your browser  
+2. Claude Code stores your credential securely  
+3. The MCP server receives authenticated requests automatically  
+4. No manual integration setup required  
+
+---
+## 📁 Project Structure
+
+```
+claude-code-notion-plugin/
+  .claude-plugin/
+    plugin.json
+    marketplace.json
+    slash-commands.json
+  skills/
+    notion/
+      knowledge-capture/
+      meeting-intelligence/
+      research-documentation/
+      spec-to-implementation/
+  .mcp.json
+  README.md
+  LICENSE
+```
+
+---
+
+## 🔧 Development
+
+1. Clone the repo  
+2. Ensure Node is installed  
+3. Launch Claude Code  
+4. Install the plugin locally
+
+---
+
+## 🙌 Credits
+
+- **Skills** by Notion 
+- **MCP Server** by Notion 
+- **Plugin Specification** by Anthropic  
+- COYS
