@@ -1,8 +1,8 @@
 {
-    "mcpServers": {
-      "notionApi": {
-        "command": "npx",
-        "args": ["-y", "@notionhq/notion-mcp-server"]
-      }
+  "mcpServers": {
+    "notion": {
+      "type": "http",
+      "url": "https://mcp.notion.com/mcp"
     }
   }
+}
